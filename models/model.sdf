@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <model name="realsense_camera">
+  <model name="realsense2_camera">
     <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
 
     <link name="base_footprint"/>
@@ -31,7 +31,10 @@
         </geometry>
       </collision>
       <visual name="camera_visual">
-        <pose>0 0 0 -1.57 0 -1.57</pose>
+        <!--horizontal camera-->
+        <!-- <pose>0 0 0 -1.57 0 -1.57</pose> -->     
+        <!-- vertical camera-->
+        <pose>0 0 0 0 0 -1.57</pose>             
         <geometry>
           <mesh>
             <uri>model://deliverybot/d435.dae</uri>
@@ -61,17 +64,24 @@
         <visualize>0</visualize>
         <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
           <hack_baseline>0.07</hack_baseline>
+          <frame_name>camera_depth_optical_frame</frame_name>
         </plugin>
       </sensor>
     </link>
 
-  <joint name="camera_joint" type="fixed">
+  <joint name="base_camera_rotation_joint" type="fixed">
     <parent>base_link</parent>
     <child>camera_link</child>
-    <pose>0 0 0 0 0 0</pose>
+    <pose>0 0 0 -1.57 0 0</pose>
     <axis>
-      <xyz>0 0 0</xyz>
+      <xyz>0 0 1</xyz>
     </axis>
+  </joint>
+
+  <joint name="camera_depth_optical_frame_joint" type="fixed">
+    <pose> 0 0 0 -1.57079632679 0 -1.57</pose>
+    <parent>camera_link</parent>
+    <child>camera_depth_optical_frame</child>
   </joint>
   
   </model>
