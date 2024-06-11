@@ -31,7 +31,7 @@
         </geometry>
       </collision>
       <visual name="camera_left_visual">
-        <pose>0 -3 0 -1.57 0 -1.57</pose>
+        <pose>0 0.3 0 -1.57 0 -2.3038</pose>
         <geometry>
           <mesh>
             <uri>model://deliverybot/d435.dae</uri>
@@ -40,6 +40,7 @@
         </geometry>
       </visual>
       <sensor name='camera_left' type='depth'>
+        <pose>0 0.3 0 0 0 -0.733</pose>
         <camera name='camera_left'>
           <horizontal_fov>1.48702</horizontal_fov>
           <image>
@@ -68,7 +69,7 @@
   <joint name="camera_left_joint" type="fixed">
     <parent>base_link</parent>
     <child>camera_left_link</child>
-    <pose>0 -3 0 0 0 0</pose>
+    <pose>0 0.3 0 0 0 -0.733</pose>
     <axis>
       <xyz>0 0 0</xyz>
     </axis>
@@ -97,7 +98,7 @@
         </geometry>
       </collision>
       <visual name="camera_right_visual">
-        <pose>0 3 0 -1.57 0 -1.57</pose>
+        <pose>0 -0.3 0 -1.57 0 -0.8378</pose>
         <geometry>
           <mesh>
             <uri>model://deliverybot/d435.dae</uri>
@@ -106,6 +107,7 @@
         </geometry>
       </visual>
       <sensor name='camera_right' type='depth'>
+        <pose>0 -0.3 0 0 0 0.733</pose>
         <camera name='camera_right'>
           <horizontal_fov>1.48702</horizontal_fov>
           <image>
@@ -134,7 +136,7 @@
   <joint name="camera_right_joint" type="fixed">
     <parent>base_link</parent>
     <child>camera_right_link</child>
-    <pose>0 -3 0 0 0 0</pose>
+    <pose>0 -0.3 0 0 0 0.733</pose>
     <axis>
       <xyz>0 0 0</xyz>
     </axis>
